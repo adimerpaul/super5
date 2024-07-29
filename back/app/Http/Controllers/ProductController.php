@@ -44,7 +44,22 @@ class ProductController extends Controller{
 
     }
     function index(){
-        return Product::with('category','subCategory')->get();
+        $products = Product::with('category', 'subCategory')->get();
+        foreach ($products as $product){
+            // Convierte el título a minúsculas
+            $product->titulo = strtolower($product->titulo);
+
+            // Reemplaza imágenes faltantes con 'default.jpg'
+            $images = ['imagen1', 'imagen2', 'imagen3', 'imagen4'];
+            foreach ($images as $image) {
+                $imagePath = public_path('images/' . $product->$image);
+                error_log($imagePath);
+                if ($product->$image == null || !file_exists($imagePath)) {
+                    $product->$image = 'default.jpg';
+                }
+            }
+        }
+        return $products;
     }
     function show($id){
         return Product::with('category','subCategory')->find($id);

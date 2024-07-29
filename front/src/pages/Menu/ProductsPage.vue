@@ -205,7 +205,7 @@ export default {
         { name: 'masVendido', label: 'Mas Vendido', align: 'left', field: row => row.masVendido },
         { name: 'category', label: 'Categoria', align: 'left', field: row => row.category.name },
         { name: 'items', label: 'Items', align: 'left', field: row => `${row.item1===null?'':row.item1} ${row.item2===null?'':row.item2} ${row.item3===null?'':row.item3} ${row.item4===null?'':row.item4} ${row.item5===null?'':row.item5} ${row.item6===null?'':row.item6}` },
-        { name: 'sub_category', label: 'Sub Categoria', align: 'left', field: row => row.sub_category.name },
+        { name: 'sub_category', label: 'Sub Categoria', align: 'left', field: row => row.sub_category?.name },
       ]
     }
   },
