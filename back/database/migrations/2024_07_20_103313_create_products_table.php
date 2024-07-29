@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->text('descripcion')->nullable();
             $table->string('titulo')->nullable();
-            $table->integer('precio')->nullable();
-            $table->string('masVendido')->nullable();
-            $table->string('imagen1')->nullable();
+            $table->integer('precio')->nullable()->default(0);
+            $table->string('masVendido')->nullable()->default('no');
+            $table->string('imagen1')->nullable()->default('default.jpg');
             $table->string('imagen2')->nullable();
             $table->string('imagen3')->nullable();
             $table->string('imagen4')->nullable();
@@ -33,9 +33,9 @@ return new class extends Migration
             $table->string('item10')->nullable();
             $table->integer('precioAnterior')->nullable();
             $table->integer('stock')->nullable();
-            $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('category_id')->nullable();
             $table->foreign('category_id')->references('id')->on('categories');
-            $table->unsignedBigInteger('sub_category_id');
+            $table->unsignedBigInteger('sub_category_id')->nullable();
             $table->foreign('sub_category_id')->references('id')->on('sub_categories');
             $table->timestamps();
         });
