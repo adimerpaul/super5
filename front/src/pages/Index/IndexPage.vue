@@ -15,7 +15,7 @@
             @click="tab = category.id"
             :color="tab === category.id ? 'primary' : 'grey-4'"
             :icon="category.icon"
-            :label="category.nombre"
+            :label="$filters.capitalize(category.nombre)"
           />
         </div>
       </div>
@@ -54,7 +54,7 @@
               size="12px"
               :color="tab === category.id ? 'primary' : 'grey-4'"
               :icon="category.icon"
-              :label="category.nombre"
+              :label="$filters.capitalize(category.nombre)"
             />
           </div>
 <!--          <pre>{{scrollInfo}}</pre>-->

@@ -21,6 +21,13 @@ export default boot(({ app,router  }) => {
   app.config.globalProperties.$axios = axios.create({ baseURL: import.meta.env.VITE_API_URL })
   app.config.globalProperties.$store = useCounterStore()
   app.config.globalProperties.$alert = Alert
+  app.config.globalProperties.$filters = {
+    capitalize: function (value) {
+      if (!value) return ''
+      value = value.toString().toLowerCase()
+      return value.charAt(0).toUpperCase() + value.slice(1)
+    }
+  }
   const token = localStorage.getItem('tokenEco')
   if(token){
     app.config.globalProperties.$axios.defaults.headers.common['Authorization'] = `Bearer ${token}`

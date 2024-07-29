@@ -420,7 +420,16 @@ export default {
     async categoriesGet() {
       try {
         const response = await this.$axios.get('categories');
-        this.categories = response.data;
+        //maximos 3 categorias
+        // this.categories = response.data.slice(0,3);
+        response.data.forEach((category, index) => {
+          if (index < 3){
+            this.categories.push({
+              name: this.$filters.capitalize(category.name),
+              icon: category.icon
+            });
+          }
+        });
       } catch (e) {
         console.log(e);
       }
